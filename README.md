@@ -1,5 +1,13 @@
 # macOS Mouse Input Monitor
 
+## English Overview
+
+macOS Mouse Input Monitor is a lightweight menu-bar utility for checking the connection state and live event rate of a mouse. It discovers connected HID pointing devices, lets the user select which device to observe, refreshes the event count every 0.5 seconds, and displays activity state, connection type, vendor ID, and product ID.
+
+All monitoring happens locally. The app counts mouse events and reads device status; it does not record keyboard input, pointer coordinates, or click contents. macOS may request Input Monitoring or Accessibility permission to observe activity in other applications. Without those permissions, device information may still appear, but global event counts can be incomplete.
+
+The implementation uses SwiftUI `MenuBarExtra`, IOKit HID discovery, read-only Core Graphics event taps, AppKit event monitoring, and `UserDefaults`. This repository currently contains the core source and resources but no standalone Xcode project. To build it, create a macOS App target in Xcode and add the files under `Connect/`.
+
 一个轻量级 macOS 菜单栏工具，用于查看当前鼠标的连接信息、活动状态和实时输入事件速率。
 
 应用通过 macOS HID 与事件监听接口在本机统计鼠标输入，并把结果直接显示在菜单栏中，适合检查鼠标是否正常连接、是否持续产生输入，以及快速观察事件频率。
